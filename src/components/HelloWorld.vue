@@ -5,10 +5,31 @@ defineProps<{ msg: string }>()
 
 const count = ref(0)
 </script>
-
+<script lang="ts">
+export default {
+  emits: {
+    interact(payload: string): string{
+    // perform runtime validation
+    if (payload) {
+      return payload;
+    }  
+    return 'emitted';
+    },
+    methods: {
+  
+      emitStr() {
+    // Triggering the event with the required payload
+        console.log(this);
+      /*  this.$emit('interact', { 
+          typeOfInteract: 'clicked' 
+      })*/}
+    },
+  }
+}
+</script>
 <template>
   <h1>{{ msg }}</h1>
-
+  <button  @click="this.$emit('interact', 'from temp')">emitted</button>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
