@@ -2,12 +2,7 @@
 import type { PropType } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 import { type RouteRecordRaw } from 'vue-router'
-/*
-type routeProp = {
-  routes: RouteRecordRaw[]
-}
-const props = defineProps<routeProp>();
-*/
+console.log('hello from setup');
 </script>
 
 <script lang="ts">
@@ -15,37 +10,27 @@ const props = defineProps<routeProp>();
   export default {
     props: {
       routes: {
-         type: Array, //Array as PropType<RouteRecordRaw[]>,
+         type: Array as PropType<RouteRecordRaw[]>,
         
          default: () => []
       }
     },
     methods: {
       alrt(){
-        alert(this.routes);  
+        console.log(this.$props.routes);  
       }
     },
-    setup(props){
-      alert(props.routes?);
-    },
+
   }
 </script>
 <template>
-<!-- <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-</div> -->
+
 <div>
 <button target="_blank" @click="alrt">alert</button>
-  <router-link v-for="route in routes" :key="route.path" :to="route.path">
+  <router-link v-for="route in routes" :key="route.path" :to="route.path" class="drop">
     {{route.name}}
   </router-link>
 
-<span>wtf</span>
 </div>
 <!--    <router-link to="/default1">default1</router-link>
     <router-link to="/default2">defaut2</router-link>

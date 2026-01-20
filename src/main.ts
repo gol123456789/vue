@@ -48,6 +48,6 @@ const router = createRouter({
   history: createWebHistory(),
   routes: routeRecords,
 })
-const app = createApp(App)
+const app = createApp(App, { routes: routeRecords })
 app.use(router);
-app.mount('#app', { routes: routeRecords });
+app.mount('#app');
